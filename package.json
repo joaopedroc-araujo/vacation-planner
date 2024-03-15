@@ -12,12 +12,14 @@
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
     "react": "^18.2.0",
+    "react-big-calendar": "^1.11.2",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.51.0",
     "yup": "^1.4.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.64",
+    "@types/react-big-calendar": "^1.8.9",
     "@types/react-dom": "^18.2.21",
     "@typescript-eslint/eslint-plugin": "^7.1.1",
     "@typescript-eslint/parser": "^7.1.1",
@@ -29,6 +31,7 @@
     "eslint-plugin-react": "^7.34.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
+    "sass": "^1.72.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.2.2",
     "vite": "^5.1.6"
