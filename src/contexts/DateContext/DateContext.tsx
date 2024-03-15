@@ -1,18 +1,36 @@
 import { ReactNode, createContext, useState } from 'react';
-import DateContextType from './DateInterface';
+import DateContextType, { DateRange } from './DateInterface';
 
-const DateContext = createContext<DateContextType | undefined>(undefined);
+const defaultContextValue: DateContextType = {
+    startDate: "",
+    endDate: "",
+    setStartDate: () => { },
+    setEndDate: () => { },
+    dateRanges: [],
+    addDateRange: () => { }
+};
 
-// Crie o provedor do contexto
+const DateContext = createContext<DateContextType>(defaultContextValue);
+
 const DateProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-    const [startDate, setStartDate] = useState('');
-    const [endDate, setEndDate] = useState('');
+    const [dateRanges, setDateRanges] = useState<DateRange[]>([]);
+
+    const addDateRange = (newStartDate: string, newEndDate: string) => {
+        const newRange: DateRange = {
+            startDate: newStartDate,
+            endDate: newEndDate,
+        };
+
+        setDateRanges([...dateRanges, newRange]);
+    };
 
     const contextValue: DateContextType = {
-        startDate,
-        endDate,
-        setStartDate,
-        setEndDate,
+        startDate: "",
+        endDate: "",
+        setStartDate: (date: string) => setDateRanges(dateRanges => ({ ...dateRanges, startDate: date })),
+        setEndDate: (date: string) => setDateRanges(dateRanges => ({ ...dateRanges, endDate: date })),
+        dateRanges,
+        addDateRange,
     };
 
     return (

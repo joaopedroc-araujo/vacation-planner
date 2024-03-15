@@ -3,9 +3,11 @@ import moment from 'moment';
 import 'react-big-calendar/lib/sass/styles.scss';
 import './styles.css'
 import { useState } from 'react';
+// import { DateContext } from '../../contexts/DateContext/DateContext';
 
 const Calendars = () => {
     const localizer = momentLocalizer(moment);
+    // const { startDate, endDate } = useContext(DateContext);
     const [selectedDates, setSelectedDates] = useState<Array<Date | { start: Date; end: Date }>>([]);
 
     const handleSelectSlot = ({ start, end }: { start: Date, end: Date }) => {
@@ -17,14 +19,12 @@ const Calendars = () => {
         setSelectedDates((prevSelectedDates) => [...prevSelectedDates, selectedDateRange]);
     };
 
-
     console.log(selectedDates)
 
     return (
         <div>
             <Calendar
                 localizer={localizer}
-                // view='month'
                 views={['month']}
                 selectable
                 startAccessor="start"

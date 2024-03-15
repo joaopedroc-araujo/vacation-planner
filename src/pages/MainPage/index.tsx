@@ -1,10 +1,12 @@
 import Calendars from '../../components/Calendar';
+import Inputs from '../../components/Inputs';
 
 const MainPage = () => {
     return (
-        <div>
+        <>
+            <Inputs />
             <Calendars />
-        </div>
+        </>
     );
 }
 
