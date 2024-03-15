@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useState } from 'react';
+import { ReactNode, createContext, useContext, useState } from 'react';
 import DateContextType, { DateRange } from './DateInterface';
 
 const defaultContextValue: DateContextType = {
@@ -11,6 +11,9 @@ const defaultContextValue: DateContextType = {
 };
 
 const DateContext = createContext<DateContextType>(defaultContextValue);
+
+
+export const useDateContext = () => useContext(DateContext);
 
 const DateProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [dateRanges, setDateRanges] = useState<DateRange[]>([]);
