@@ -1,11 +1,12 @@
-import Calendars from './components/Calendar';
+import DateProvider from './contexts/DateContext/DateContext';
+import MainPage from './pages/MainPage';
 
 function App() {
 
   return (
-    <div>
-      <Calendars />
-    </div>
+    <DateProvider>
+      <MainPage />
+    </DateProvider>
   );
 }
 
