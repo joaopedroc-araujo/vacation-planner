@@ -15,26 +15,12 @@ const Inputs: React.FC = () => {
         resolver: yupResolver(schema),
     });
 
-    const { setStartDate, setEndDate } = useDateContext();
-
     useEffect(() => {
         for (const fieldName in schema.fields) {
             register(fieldName as keyof typeof schema.fields);
         }
     }, [register]);
 
-
-    const handleStartDateChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const newStartDate = event.target.value;
-        setStartDate(newStartDate);
-    };
-
-    const handleEndDateChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const newEndDate = event.target.value;
-        setEndDate(newEndDate);
-    };
-
-    // console.log(startDate, endDate, dateRanges);
 
     return (
         <div>
@@ -55,24 +41,6 @@ const Inputs: React.FC = () => {
                 }}
             />
             {errors.description && <p>{errors.description?.message}</p>}
-
-            <input
-                type='date'
-                onChange={(event: React.FocusEvent<HTMLInputElement>) => {
-                    setValue("starting-date", new Date(event.target.value));
-                    trigger("title");
-                }}
-            />
-            {errors['starting-date'] && <p>{errors['starting-date']?.message}</p>}
-
-            <input
-                type='date'
-                onChange={(event: React.FocusEvent<HTMLInputElement>) => {
-                    setValue("starting-date", new Date(event.target.value));
-                    trigger("title");
-                }}
-            />
-            {errors['ending-date'] && <p>{errors['ending-date']?.message}</p>}
 
             <input
                 placeholder='Location'
