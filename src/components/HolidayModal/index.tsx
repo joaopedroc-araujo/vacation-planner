@@ -1,16 +1,38 @@
-import Modal from 'react-modal';
+import { Modal, Button } from 'react-bootstrap';
 import { DateModalProps } from './interface';
 
-const DateModal = ({ modalIsOpen, closeModal, Inputs, onApply }: DateModalProps) => {
+const DateModal = ({ modalIsOpen, Inputs, onApply }: DateModalProps) => {
+    if (!modalIsOpen) return null;
+
     return (
-        <Modal
-            isOpen={modalIsOpen}
-            onRequestClose={closeModal}
-            contentLabel="Inputs Modal"
+        <Modal dialogClassName="modal-dialog-scrollable"
+            show={modalIsOpen}
+            onHide={onApply}
+            centered={true}
+            animation={true}
         >
-            {Inputs}
-            <button onClick={onApply}>Aplicar</button>
-        </Modal>
+            <Modal.Header
+                className='d-flex flex-column justify-content-center'
+            >
+                <Modal.Title>Modal Title</Modal.Title>
+            </Modal.Header>
+            <Modal.Body
+                className='d-flex flex-column justify-content-center'>
+                {Inputs}
+            </Modal.Body>
+            <Modal.Footer
+                className='d-flex justify-content-center'
+            >
+                <Button
+                    variant="secondary"
+                    onClick={onApply}
+                    disabled={!Inputs}
+                    className='d-flex justify-content-center'
+                >
+                    Apply
+                </Button>
+            </Modal.Footer>
+        </Modal >
     );
 };
 
