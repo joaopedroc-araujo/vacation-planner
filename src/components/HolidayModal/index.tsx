@@ -1,9 +1,7 @@
 import { Modal, Button } from 'react-bootstrap';
 import { DateModalProps } from './interface';
 
-const DateModal = ({ modalIsOpen, Inputs, onApply }: DateModalProps) => {
-    if (!modalIsOpen) return null;
-
+const DateModal = ({ modalIsOpen, closeModal, Inputs, onApply }: DateModalProps) => {
     return (
         <Modal dialogClassName="modal-dialog-scrollable"
             show={modalIsOpen}

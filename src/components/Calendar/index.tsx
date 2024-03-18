@@ -3,8 +3,7 @@ import moment from 'moment';
 import 'react-big-calendar/lib/sass/styles.scss';
 import './styles.css'
 import { useState } from 'react';
-import DateModal from '../HolidayModal';
-import Inputs from '../Inputs';
+import { date } from 'yup';
 // import { DateContext } from '../../contexts/DateContext/DateContext';
 const Calendars = () => {
     const localizer = momentLocalizer(moment);
@@ -25,7 +24,7 @@ const Calendars = () => {
             setEndDate(end);
             const selectedDateRange = {
                 start: new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate()),
-                end: new Date(end.getFullYear(), end.getMonth(), (end.getDate())),
+                end: new Date(end.getFullYear(), end.getMonth(), end.getDate()),
             };
             setSelectedDates((prevSelectedDates) => [...prevSelectedDates, selectedDateRange]);
             setClickCount(0);
@@ -34,7 +33,9 @@ const Calendars = () => {
         }
     };
 
-    console.log(selectedDates, endDate)
+    // const onClick = () => {
+    //     addDateRange
+    // }
 
     return (
         <>
